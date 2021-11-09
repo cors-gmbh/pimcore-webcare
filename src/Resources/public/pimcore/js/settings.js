@@ -92,7 +92,7 @@ pimcore.plugin.cors_webcare.settings = Class.create({
     },
 
     getTitle: function () {
-        return t('cors_webcare_settings');
+        return 'Webcare Settings';
     },
 
     refresh: function () {
@@ -109,13 +109,13 @@ pimcore.plugin.cors_webcare.settings = Class.create({
             region: 'center',
             columns: [
                 {
-                    header: t('cors_webcare_name'),
-                    width: 200,
+                    header: 'Site Domain',
+                    flex: 1,
                     dataIndex: 'siteDomain'
                 },
                 {
-                    header: t('cors_webcare_client_id'),
-                    width: 200,
+                    header: 'Client ID',
+                    width: 300,
                     dataIndex: 'clientId',
                     editor: {
                         xtype: 'textfield',
@@ -123,8 +123,8 @@ pimcore.plugin.cors_webcare.settings = Class.create({
                     }
                 },
                 {
-                    header: t('cors_webcare_organization_id'),
-                    width: 200,
+                    header: 'Organization ID',
+                    width: 300,
                     dataIndex: 'organizationId',
                     editor: {
                         xtype: 'textfield',
@@ -132,8 +132,8 @@ pimcore.plugin.cors_webcare.settings = Class.create({
                     }
                 },
                 {
-                    header: t('cors_webcare_website_id'),
-                    width: 200,
+                    header:'Website ID',
+                    width: 300,
                     dataIndex: 'websiteId',
                     editor: {
                         xtype: 'textfield',

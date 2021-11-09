@@ -1,0 +1,11 @@
+.cors_nav_webcare_settings {
+    background: url(../img/cookie.svg) center center no-repeat !important;
+}
+
+body.pimcore_version_6 .cors_nav_webcare_settings, body.pimcore_version_10 .cors_nav_webcare_settings {
+    background: url(../img/cookie-white.svg) center center no-repeat !important;
+}
+
+.cors_webcare_settings {
+    background: url(../img/cookie.svg) center center no-repeat !important;
+}

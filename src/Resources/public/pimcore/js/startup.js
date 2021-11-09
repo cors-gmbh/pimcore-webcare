@@ -29,8 +29,8 @@ pimcore.plugin.cors_webcare = Class.create(pimcore.plugin.admin, {
         if (user.isAllowed('plugins')) {
 
             var importMenu = new Ext.Action({
-                text: t('cors_webcare_settings'),
-                iconCls: 'cors_webcare_settings',
+                text: 'Webcare Settings',
+                iconCls: 'cors_nav_webcare_settings',
                 handler: this.openSettings
             });
 

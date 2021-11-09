@@ -34,9 +34,3 @@ services:
             - '@twig'
         tags:
             - { name: twig.extension }
-
-    CORS\Bundle\WebCareBundle\Controller\TestController:
-        tags:
-            - { name: controller.service_arguments }
-        calls:
-            - ['setContainer', ['@service_container']]
