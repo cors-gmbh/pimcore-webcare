@@ -1,0 +1,42 @@
+services:
+    CORS\Bundle\WebCareBundle\Controller\CreateController:
+        tags:
+            - { name: controller.service_arguments }
+
+    CORS\Bundle\WebCareBundle\Controller\ListController:
+        tags:
+            - { name: controller.service_arguments }
+
+    CORS\Bundle\WebCareBundle\Controller\UpdateController:
+        tags:
+            - { name: controller.service_arguments }
+
+    CORS\Bundle\WebCareBundle\Controller\DeleteController:
+        tags:
+            - { name: controller.service_arguments }
+
+    CORS\Bundle\WebCareBundle\EventListener\AdminJavascriptListener:
+        tags:
+            - { name: kernel.event_subscriber }
+
+    CORS\Bundle\WebCareBundle\Repository\WebCareSiteRepository:
+        arguments:
+            - '@Doctrine\Persistence\ManagerRegistry'
+
+    CORS\Bundle\WebCareBundle\Installer:
+        public: true
+        arguments:
+            - '@doctrine.dbal.default_connection'
+
+    CORS\Bundle\WebCareBundle\Twig\WebCareExtension:
+        arguments:
+            - '@CORS\Bundle\WebCareBundle\Repository\WebCareSiteRepository'
+            - '@twig'
+        tags:
+            - { name: twig.extension }
+
+    CORS\Bundle\WebCareBundle\Controller\TestController:
+        tags:
+            - { name: controller.service_arguments }
+        calls:
+            - ['setContainer', ['@service_container']]

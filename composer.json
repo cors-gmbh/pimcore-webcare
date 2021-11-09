@@ -1,0 +1,49 @@
+{
+    "name": "cors/web-care",
+    "type": "pimcore-bundle",
+    "description": "CORS - WebCare Integration",
+    "keywords": [
+        "coreshop",
+        "pimcore",
+        "ecommerce"
+    ],
+    "homepage": "http://www.cors.gmbh",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "CORS GmbH",
+            "email": "office@cors.gmbh",
+            "homepage": "https://www.cors.gmbh/",
+            "role": "TEAM"
+        }
+    ],
+    "require": {
+        "pimcore/pimcore": "^5.3 || ^6.0 || ^10.0",
+        "doctrine/orm": "^2.10"
+    },
+    "require-dev": {
+        "symplify/easy-coding-standard": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "CORS\\Bundle\\WebCareBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "Kernel.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "pimcore": {
+            "bundles": [
+                "CORS\\Bundle\\WebCareBundle\\CORSWebCareBundle"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

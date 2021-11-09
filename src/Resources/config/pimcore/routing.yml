@@ -1,0 +1,31 @@
+cors_webcaresite_create:
+    path: /admin/cors/webcaresite/create
+    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\CreateController }
+    methods:
+        - 'POST'
+    options:
+        expose: true
+
+cors_webcaresite_list:
+    path: /admin/cors/webcaresite/list
+    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\ListController }
+    methods:
+        - 'GET'
+    options:
+        expose: true
+
+cors_webcaresite_delete:
+    path: /admin/cors/webcaresite/delete
+    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\DeleteController }
+    methods:
+        - 'POST'
+    options:
+        expose: true
+
+cors_webcaresite_update:
+    path: /admin/cors/webcaresite/update
+    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\UpdateController }
+    methods:
+        - 'POST'
+    options:
+        expose: true
