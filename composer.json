@@ -3,9 +3,11 @@
     "type": "pimcore-bundle",
     "description": "CORS - WebCare Integration",
     "keywords": [
-        "coreshop",
+        "cors",
         "pimcore",
-        "ecommerce"
+        "datareporter",
+        "webcare",
+        "cookiebanner"
     ],
     "homepage": "http://www.cors.gmbh",
     "license": "GPL-3.0-or-later",
