@@ -11,7 +11,7 @@ use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class WebCareExtension extends AbstractExtension
+final class WebCareExtension extends AbstractExtension
 {
     protected $repository;
     protected $twig;
@@ -63,7 +63,7 @@ class WebCareExtension extends AbstractExtension
         return $this->createUrl($config, $filename, $extension);
     }
 
-    public function createUrl(WebCareSite $config, string $filename, string $extension)
+    private function createUrl(WebCareSite $config, string $filename, string $extension)
     {
         if ($config->getWebsiteId()) {
             return sprintf(
@@ -76,6 +76,17 @@ class WebCareExtension extends AbstractExtension
             );
         }
 
+        return sprintf(
+            'https://webcache.datareporter.eu/c/%s/%s/%s.%s',
+            $config->getClientId(),
+            $config->getOrganizationId(),
+            $filename,
+            $extension,
+        );
+    }
+
+    private function createImprintUrl(WebCareSite $config, string $filename, string $extension)
+    {
         return sprintf(
             'https://webcache.datareporter.eu/c/%s/%s/%s.%s',
             $config->getClientId(),
@@ -144,8 +155,8 @@ class WebCareExtension extends AbstractExtension
             return null;
         }
 
-        $js = $this->createUrl($config, 'imprint', 'js');
-        $js_noscript = $this->createUrl($config, 'imprint_noscript', 'js');
+        $js = $this->createImprintUrl($config, 'imprint', 'js');
+        $js_noscript = $this->createImprintUrl($config, 'imprint_noscript', 'js');
 
         return $this->twig->render('@CORSWebCare/imprint.html.twig', [
             'js' => $js,
@@ -161,8 +172,8 @@ class WebCareExtension extends AbstractExtension
             return null;
         }
 
-        $js = $this->createUrl($config, 'imprint_v2', 'js');
-        $js_noscript = $this->createUrl($config, 'imprint_noscript', 'js');
+        $js = $this->createImprintUrl($config, 'imprint_v2', 'js');
+        $js_noscript = $this->createImprintUrl($config, 'imprint_noscript', 'js');
 
         return $this->twig->render('@CORSWebCare/imprint_v2.html.twig', [
             'js' => $js,
