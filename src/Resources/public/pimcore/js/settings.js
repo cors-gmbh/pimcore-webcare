@@ -30,7 +30,7 @@ pimcore.plugin.cors_webcare.settings = Class.create({
         this.store = new Ext.data.Store({
             proxy: {
                 type: 'ajax',
-                url: Routing.generate(this.url.list),
+                url: typeof Routing === 'object' ? Routing.generate(this.url.list) : '/admin/cors/webcaresite/list',
                 reader: {
                     type: 'json',
                 }
@@ -170,7 +170,7 @@ pimcore.plugin.cors_webcare.settings = Class.create({
 
                             if (rec.data.webCareId) {
                                 Ext.Ajax.request({
-                                    url: Routing.generate(this.url.delete, {'id': rec.data.webCareId}),
+                                    url: typeof Routing === 'object' ? Routing.generate(this.url.delete, {'id': rec.data.webCareId}) : '/admin/cors/webcaresite/delete?id=' + rec.data.webCareId,
                                     method: 'post',
                                     success: function (response) {
                                         this.refresh();
@@ -189,8 +189,17 @@ pimcore.plugin.cors_webcare.settings = Class.create({
         });
 
         this.grid.on('edit', function (editor, e) {
+            var route = '';
+
+            if (typeof Routing === 'object') {
+                route = e.record.data.webCareId ? Routing.generate(this.url.update, {'id': e.record.data.webCareId}) : Routing.generate(this.url.add);
+            }
+            else {
+                route = e.record.data.webCareId ? '/admin/cors/webcaresite/update?id=' + e.record.data.webCareId : '/admin/cors/webcaresite/create';
+            }
+
             Ext.Ajax.request({
-                url: e.record.data.webCareId ? Routing.generate(this.url.update, {'id': e.record.data.webCareId}) : Routing.generate(this.url.add),
+                url: route,
                 jsonData: {
                     'siteId': e.record.data.siteId,
                     'active': e.record.data.active,
