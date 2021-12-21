@@ -21,7 +21,7 @@
     ],
     "require": {
         "pimcore/pimcore": "^5.3 || ^6.0 || ^10.0",
-        "doctrine/orm": "^2.10"
+        "doctrine/orm": "^2.7"
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^9.4"
