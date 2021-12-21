@@ -19,12 +19,14 @@ namespace CORS\Bundle\WebCareBundle;
 
 use Doctrine\DBAL\Connection;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
+use Pimcore\Extension\Bundle\Installer\OutputWriterInterface;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Installer implements InstallerInterface
 {
     protected $connection;
+    protected $writer;
 
     public function __construct(Connection $connection)
     {
@@ -56,6 +58,26 @@ class Installer implements InstallerInterface
     public function canBeUninstalled()
     {
         return $this->isInstalled();
+    }
+
+    public function canBeUpdated()
+    {
+        return false;
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function getOutputWriter(): OutputWriterInterface
+    {
+        return $this->writer;
+    }
+
+    public function setOutputWriter(OutputWriterInterface $outputWriter)
+    {
+        $this->writer = $outputWriter;
     }
 
     public function needsReloadAfterInstall()
