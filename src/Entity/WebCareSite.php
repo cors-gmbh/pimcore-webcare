@@ -25,6 +25,11 @@ class WebCareSite
     protected $id;
 
     /**
+     * @var bool
+     */
+    protected $active = false;
+
+    /**
      * @var int|null
      */
     protected $siteId;
@@ -47,6 +52,16 @@ class WebCareSite
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
     }
 
     public function getSiteId(): ?int

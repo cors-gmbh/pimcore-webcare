@@ -37,6 +37,7 @@ pimcore.plugin.cors_webcare.settings = Class.create({
             },
             fields: [
                 {name: 'webCareId'},
+                {name: 'active'},
                 {name: 'siteId'},
                 {name: 'clientId'},
                 {name: 'organizationId'},
@@ -114,6 +115,15 @@ pimcore.plugin.cors_webcare.settings = Class.create({
                     dataIndex: 'siteDomain'
                 },
                 {
+                    header: 'Active',
+                    width: 100,
+                    dataIndex: 'active',
+                    editor: {
+                        xtype: 'checkbox',
+                        required: true
+                    }
+                },
+                {
                     header: 'Client ID',
                     width: 300,
                     dataIndex: 'clientId',
@@ -183,6 +193,7 @@ pimcore.plugin.cors_webcare.settings = Class.create({
                 url: e.record.data.webCareId ? Routing.generate(this.url.update, {'id': e.record.data.webCareId}) : Routing.generate(this.url.add),
                 jsonData: {
                     'siteId': e.record.data.siteId,
+                    'active': e.record.data.active,
                     'clientId': e.record.data.clientId,
                     'organizationId': e.record.data.organizationId,
                     'websiteId': e.record.data.websiteId,

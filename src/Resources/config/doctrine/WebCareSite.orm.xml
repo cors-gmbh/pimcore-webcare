@@ -10,6 +10,7 @@
         </id>
 
         <field name="siteId" type="integer" nullable="true" />
+        <field name="active" type="boolean" nullable="false" />
         <field name="clientId" type="string" nullable="true" />
         <field name="organizationId" type="string" nullable="true" />
         <field name="websiteId" type="string" nullable="true" />

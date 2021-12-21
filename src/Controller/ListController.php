@@ -36,6 +36,7 @@ class ListController
             if ($config->getSiteId() === 0) {
                 $result[] = [
                     'webCareId' => $config->getId(),
+                    'active' => $config->isActive(),
                     'siteId' => $config->getSiteId(),
                     'clientId' => $config->getClientId(),
                     'organizationId' => $config->getOrganizationId(),
@@ -56,6 +57,7 @@ class ListController
 
             $result[] = [
                 'webCareId' => $config->getId(),
+                'active' => $config->isActive(),
                 'siteId' => $config->getSiteId(),
                 'clientId' => $config->getClientId(),
                 'organizationId' => $config->getOrganizationId(),
@@ -73,6 +75,7 @@ class ListController
 
             $result[] = [
                 'webCareId' => null,
+                'active' => false,
                 'siteId' => $site->getId(),
                 'clientId' => null,
                 'organizationId' => null,
@@ -84,6 +87,7 @@ class ListController
         if (!in_array(0, $sitesProcessed, true)) {
             $result[] = [
                 'webCareId' => null,
+                'active' => false,
                 'siteId' => 0,
                 'clientId' => null,
                 'organizationId' => null,

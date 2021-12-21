@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace CORS\Bundle\WebCareBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,6 +30,7 @@ final class WebCareSiteType extends AbstractType
     {
         $builder
             ->add('siteId', IntegerType::class)
+            ->add('active', CheckboxType::class)
             ->add('clientId', TextType::class)
             ->add('organizationId', TextType::class)
             ->add('websiteId', TextType::class)

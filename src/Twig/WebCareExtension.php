@@ -43,18 +43,18 @@ class WebCareExtension extends AbstractExtension
         ];
     }
 
-    public function findConfig(): ?WebCareSite
+    public function findConfig(bool $active = true): ?WebCareSite
     {
         if (Site::isSiteRequest()) {
-            return $this->repository->findForSite(Site::getCurrentSite());
+            return $this->repository->findForSite(Site::getCurrentSite(), $active);
         }
 
-        return $this->repository->findDefault();
+        return $this->repository->findDefault($active);
     }
 
-    public function webCareIntegration(string $filename, string $extension)
+    public function webCareIntegration(string $filename, string $extension, bool $active = true)
     {
-        $config = $this->findConfig();
+        $config = $this->findConfig($active);
 
         if (!$config) {
             return null;
@@ -85,9 +85,9 @@ class WebCareExtension extends AbstractExtension
         );
     }
 
-    public function renderCookieBanner()
+    public function renderCookieBanner(bool $active = true)
     {
-        $config = $this->findConfig();
+        $config = $this->findConfig($active);
 
         if (!$config) {
             return null;
@@ -102,9 +102,9 @@ class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderPrivacyStatement()
+    public function renderPrivacyStatement(bool $active = true)
     {
-        $config = $this->findConfig();
+        $config = $this->findConfig($active);
 
         if (!$config) {
             return null;
@@ -119,9 +119,9 @@ class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderPrivacyStatementV2()
+    public function renderPrivacyStatementV2(bool $active = true)
     {
-        $config = $this->findConfig();
+        $config = $this->findConfig($active);
 
         if (!$config) {
             return null;
@@ -136,9 +136,9 @@ class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderImprint()
+    public function renderImprint(bool $active = true)
     {
-        $config = $this->findConfig();
+        $config = $this->findConfig($active);
 
         if (!$config) {
             return null;
@@ -153,9 +153,9 @@ class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderImprintV2()
+    public function renderImprintV2(bool $active = true)
     {
-        $config = $this->findConfig();
+        $config = $this->findConfig($active);
 
         if (!$config) {
             return null;
@@ -170,33 +170,33 @@ class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function cookieBannerCss()
+    public function cookieBannerCss(bool $active = true)
     {
-        return $this->webCareIntegration('banner', 'css');
+        return $this->webCareIntegration('banner', 'css', $active);
     }
 
-    public function cookieBannerJs()
+    public function cookieBannerJs(bool $active = true)
     {
-        return $this->webCareIntegration('banner', 'js');
+        return $this->webCareIntegration('banner', 'js', $active);
     }
 
-    public function privacyStatementJs()
+    public function privacyStatementJs(bool $active = true)
     {
-        return $this->webCareIntegration('privacynotice', 'js');
+        return $this->webCareIntegration('privacynotice', 'js', $active);
     }
 
-    public function imprintJs()
+    public function imprintJs(bool $active = true)
     {
-        return $this->webCareIntegration('imprint', 'js');
+        return $this->webCareIntegration('imprint', 'js', $active);
     }
 
-    public function privacyStatementJsV2()
+    public function privacyStatementJsV2(bool $active = true)
     {
-        return $this->webCareIntegration('privacynotice_v2', 'js');
+        return $this->webCareIntegration('privacynotice_v2', 'js', $active);
     }
 
-    public function imprintJsV2()
+    public function imprintJsV2(bool $active = true)
     {
-        return $this->webCareIntegration('imprint_v2', 'js');
+        return $this->webCareIntegration('imprint_v2', 'js', $active);
     }
 }

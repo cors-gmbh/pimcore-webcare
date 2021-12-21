@@ -33,7 +33,7 @@ class Installer implements InstallerInterface
 
     public function install()
     {
-        $this->connection->executeQuery('CREATE TABLE cors_webcare_site (id INT AUTO_INCREMENT NOT NULL, siteId INT DEFAULT NULL, clientId VARCHAR(255) DEFAULT NULL, organizationId VARCHAR(255) DEFAULT NULL, websiteId VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8MB4 COLLATE `utf8mb4_general_ci` ENGINE = InnoDB');
+        $this->connection->executeQuery('CREATE TABLE cors_webcare_site (id INT AUTO_INCREMENT NOT NULL, siteId INT DEFAULT NULL, active TINYINT(1) NOT NULL, clientId VARCHAR(255) DEFAULT NULL, organizationId VARCHAR(255) DEFAULT NULL, websiteId VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8MB4 COLLATE `utf8mb4_general_ci` ENGINE = InnoDB');
     }
 
     public function uninstall()

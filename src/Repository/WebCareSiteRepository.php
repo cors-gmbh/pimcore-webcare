@@ -29,13 +29,13 @@ class WebCareSiteRepository extends ServiceEntityRepository
         parent::__construct($registry, WebCareSite::class);
     }
 
-    public function findDefault(): ?WebCareSite
+    public function findDefault(bool $active = false): ?WebCareSite
     {
-        return $this->findOneBy(['siteId' => 0]);
+        return $this->findOneBy(['siteId' => 0, 'active' => $active]);
     }
 
-    public function findForSite(Site $site): ?WebCareSite
+    public function findForSite(Site $site, bool $active = false): ?WebCareSite
     {
-        return $this->findOneBy(['siteId' => $site->getId()]);
+        return $this->findOneBy(['siteId' => $site->getId(), 'active' => $active]);
     }
 }
