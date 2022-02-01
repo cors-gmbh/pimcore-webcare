@@ -67,7 +67,7 @@ final class WebCareExtension extends AbstractExtension
     {
         if ($config->getWebsiteId()) {
             return sprintf(
-                'https://webcache.datareporter.eu/c/%s/%s/%s/%s.%s',
+                'https://webcache-eu.datareporter.eu/c/%s/%s/%s/%s.%s',
                 $config->getClientId(),
                 $config->getOrganizationId(),
                 $config->getWebsiteId(),
@@ -77,7 +77,7 @@ final class WebCareExtension extends AbstractExtension
         }
 
         return sprintf(
-            'https://webcache.datareporter.eu/c/%s/%s/%s.%s',
+            'https://webcache-eu.datareporter.eu/c/%s/%s/%s.%s',
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
@@ -88,7 +88,7 @@ final class WebCareExtension extends AbstractExtension
     private function createImprintUrl(WebCareSite $config, string $filename, string $extension)
     {
         return sprintf(
-            'https://webcache.datareporter.eu/c/%s/%s/%s.%s',
+            'https://webcache-eu.datareporter.eu/c/%s/%s/%s.%s',
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
