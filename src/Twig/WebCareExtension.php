@@ -72,7 +72,7 @@ final class WebCareExtension extends AbstractExtension
                 $config->getOrganizationId(),
                 $config->getWebsiteId(),
                 $filename,
-                $extension,
+                $extension
             );
         }
 
@@ -81,7 +81,7 @@ final class WebCareExtension extends AbstractExtension
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
-            $extension,
+            $extension
         );
     }
 
@@ -92,7 +92,7 @@ final class WebCareExtension extends AbstractExtension
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
-            $extension,
+            $extension
         );
     }
 
