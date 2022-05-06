@@ -19,6 +19,7 @@ namespace CORS\Bundle\WebCareBundle;
 
 use Doctrine\DBAL\Connection;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
+use Pimcore\Extension\Bundle\Installer\OutputWriter;
 use Pimcore\Extension\Bundle\Installer\OutputWriterInterface;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -72,7 +73,7 @@ class Installer implements InstallerInterface
 
     public function getOutputWriter(): OutputWriterInterface
     {
-        return $this->writer;
+        return $this->writer ?? new OutputWriter();
     }
 
     public function setOutputWriter(OutputWriterInterface $outputWriter)
