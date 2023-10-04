@@ -19,7 +19,6 @@ namespace CORS\Bundle\WebCareBundle\Controller;
 
 use CORS\Bundle\WebCareBundle\Entity\WebCareSite;
 use CORS\Bundle\WebCareBundle\Form\Type\WebCareSiteType;
-use CORS\Bundle\WebCareBundle\Repository\WebCareSiteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;

@@ -19,44 +19,45 @@ namespace CORS\Bundle\WebCareBundle;
 
 use Doctrine\DBAL\Connection;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
-use Pimcore\Extension\Bundle\Installer\OutputWriter;
-use Pimcore\Extension\Bundle\Installer\OutputWriterInterface;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class Installer implements InstallerInterface
 {
     protected $connection;
-    protected $writer;
 
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
     }
 
-    public function install()
+    public function install(): void
     {
         $this->connection->executeQuery('CREATE TABLE cors_webcare_site (id INT AUTO_INCREMENT NOT NULL, siteId INT DEFAULT NULL, active TINYINT(1) NOT NULL, clientId VARCHAR(255) DEFAULT NULL, organizationId VARCHAR(255) DEFAULT NULL, websiteId VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8MB4 COLLATE `utf8mb4_general_ci` ENGINE = InnoDB');
     }
 
-    public function uninstall()
+    public function uninstall(): void
     {
-        if ($this->connection->getSchemaManager()->tablesExist('cors_webcare_site')) {
-            $this->connection->getSchemaManager()->dropTable('cors_webcare_site');
+        $schemaManager = $this->connection->createSchemaManager();
+
+        if ($schemaManager->tablesExist(['cors_webcare_site'])) {
+            $schemaManager->dropTable('cors_webcare_site');
         }
     }
 
-    public function isInstalled()
+    public function isInstalled(): bool
     {
-        return $this->connection->getSchemaManager()->tablesExist('cors_webcare_site');
+        $schemaManager = $this->connection->createSchemaManager();
+
+        return $schemaManager->tablesExist(['cors_webcare_site']);
     }
 
-    public function canBeInstalled()
+    public function canBeInstalled(): bool
     {
         return !$this->isInstalled();
     }
 
-    public function canBeUninstalled()
+    public function canBeUninstalled(): bool
     {
         return $this->isInstalled();
     }
@@ -68,25 +69,14 @@ class Installer implements InstallerInterface
 
     public function update()
     {
-
     }
 
-    public function getOutputWriter(): OutputWriterInterface
-    {
-        return $this->writer ?? new OutputWriter();
-    }
-
-    public function setOutputWriter(OutputWriterInterface $outputWriter)
-    {
-        $this->writer = $outputWriter;
-    }
-
-    public function needsReloadAfterInstall()
+    public function needsReloadAfterInstall(): bool
     {
         return true;
     }
 
-    public function getOutput(): OutputInterface
+    public function getOutput(): BufferedOutput|NullOutput
     {
         return new NullOutput();
     }

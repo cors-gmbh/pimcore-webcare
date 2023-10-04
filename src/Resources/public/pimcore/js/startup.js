@@ -13,16 +13,12 @@
 
 pimcore.registerNS('pimcore.plugin.cors_webcare');
 
-pimcore.plugin.cors_webcare = Class.create(pimcore.plugin.admin, {
-    getClassName: function () {
-        return 'pimcore.plugin.cors_webcare';
-    },
-
+pimcore.plugin.cors_webcare = Class.create({
     initialize: function () {
-        pimcore.plugin.broker.registerPlugin(this);
+        document.addEventListener(pimcore.events.pimcoreReady, this.pimcoreReady.bind(this));
     },
 
-    pimcoreReady: function (params, broker) {
+    pimcoreReady: function () {
 
         var user = pimcore.globalmanager.get('user');
 

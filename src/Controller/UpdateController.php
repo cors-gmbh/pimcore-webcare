@@ -33,6 +33,7 @@ class UpdateController
         EntityManagerInterface $entityManager
     ) {
         $body = json_decode($request->getContent(), true);
+        /** @psalm-suppress InternalMethod **/
         $config = $repository->find($request->get('id'));
 
         if (!$config) {

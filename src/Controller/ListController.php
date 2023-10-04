@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace CORS\Bundle\WebCareBundle\Controller;
 
-use CORS\Bundle\WebCareBundle\Entity\WebCareSite;
 use CORS\Bundle\WebCareBundle\Repository\WebCareSiteRepository;
 use Pimcore\Model\Site;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,14 +25,16 @@ class ListController
 {
     public function __invoke(WebCareSiteRepository $repository)
     {
-        $sites = new Site\Listing();
+        $siteListing = new Site\Listing();
+        $sites = $siteListing->getSites();
+
         $all = $repository->findAll();
         $result = [];
 
         $sitesProcessed = [];
 
         foreach ($all as $config) {
-            if ($config->getSiteId() === 0) {
+            if (0 === $config->getSiteId()) {
                 $result[] = [
                     'webCareId' => $config->getId(),
                     'active' => $config->isActive(),

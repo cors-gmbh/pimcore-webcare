@@ -19,8 +19,7 @@ final class WebCareExtension extends AbstractExtension
     public function __construct(
         WebCareSiteRepository $repository,
         Environment $twig
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->twig = $twig;
     }

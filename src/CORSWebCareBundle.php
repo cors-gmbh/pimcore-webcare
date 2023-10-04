@@ -31,7 +31,7 @@ class CORSWebCareBundle extends AbstractPimcoreBundle
         return 'CORS WebCare Bundle';
     }
 
-    public function getInstaller()
+    public function getInstaller(): Installer
     {
         return $this->container->get(Installer::class);
     }

@@ -29,6 +29,7 @@ class DeleteController
         WebCareSiteRepository $repository,
         EntityManagerInterface $entityManager
     ) {
+        /** @psalm-suppress InternalMethod **/
         $config = $repository->find($request->get('id'));
 
         if (!$config) {

@@ -20,7 +20,7 @@ namespace CORS\Bundle\WebCareBundle\Entity;
 class WebCareSite
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $id;
 
