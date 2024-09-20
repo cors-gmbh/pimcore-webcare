@@ -22,6 +22,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path-to-signatures: 'signatures/version1/cla.json'
-          path-to-document: 'https://github.com/cors-gmbh/pimcore-webcare/blob/5.0/CLA.md'
+          path-to-document: 'https://github.com/cors-gmbh/pimcore-webcare/blob/main/CLA.md'
           branch: "main"
           allowlist: user1,bot*
