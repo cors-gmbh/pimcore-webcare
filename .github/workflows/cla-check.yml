@@ -21,7 +21,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path-to-signatures: 'signatures/version1/cla.json'
+          path-to-signatures: '.github/signatures/version1/cla.json'
           path-to-document: 'https://github.com/cors-gmbh/pimcore-webcare/blob/main/CLA.md'
           branch: "main"
           allowlist: user1,bot*
