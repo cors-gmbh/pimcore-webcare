@@ -2,6 +2,19 @@
 
 declare(strict_types=1);
 
+/**
+ * CORS GmbH.
+ *
+ * This source file is available under two different licenses:
+ * - GNU General Public License version 3 (GPLv3)
+ * - Pimcore Commercial License (PCL)
+ * Full copyright and license information is available in
+ * LICENSE.md which is distributed with this source code.
+ *
+ * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
+ * @license    https://www.cors.gmbh/license     GPLv3 and PCL
+ */
+
 namespace CORS\Bundle\WebCareBundle\Twig;
 
 use CORS\Bundle\WebCareBundle\Entity\WebCareSite;
@@ -14,11 +27,12 @@ use Twig\TwigFunction;
 final class WebCareExtension extends AbstractExtension
 {
     protected $repository;
+
     protected $twig;
 
     public function __construct(
         WebCareSiteRepository $repository,
-        Environment $twig
+        Environment $twig,
     ) {
         $this->repository = $repository;
         $this->twig = $twig;
@@ -73,7 +87,7 @@ final class WebCareExtension extends AbstractExtension
                 $config->getOrganizationId(),
                 $config->getWebsiteId(),
                 $filename,
-                $extension
+                $extension,
             );
         }
 
@@ -82,7 +96,7 @@ final class WebCareExtension extends AbstractExtension
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
-            $extension
+            $extension,
         );
     }
 
@@ -93,7 +107,7 @@ final class WebCareExtension extends AbstractExtension
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
-            $extension
+            $extension,
         );
     }
 
@@ -104,7 +118,7 @@ final class WebCareExtension extends AbstractExtension
             $clientId,
             $organizationId,
             $filename,
-            $extension
+            $extension,
         );
     }
 
