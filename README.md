@@ -38,3 +38,5 @@ This bundle provides several ways of integration. It comes with several twig fun
 - **cors_webcare_imprint** Renders the cors_webcare_imprint_js.js directly
 - **cors_webcare_imprint_v2_js** Gives you the full path to Webcare's imprint_v2.js file
 - **cors_webcare_imprint_v2**: Renders the cors_webcare_imprint_v2.js directly
+- **cors_webcare_webdoc_v2_js**: Gives you the full path to Webcare's webdoc_v2.js file
+- **cors_webcare_webdoc_v2**: Renders the cors_webcare_webdoc_v2.js directly
