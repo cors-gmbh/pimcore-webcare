@@ -27,7 +27,7 @@ class DeleteController
     public function __invoke(
         Request $request,
         WebCareSiteRepository $repository,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ) {
         /** @psalm-suppress InternalMethod **/
         $config = $repository->find($request->get('id'));

@@ -29,7 +29,7 @@ class CreateController
     public function __invoke(
         Request $request,
         FormFactoryInterface $formFactory,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ) {
         $body = json_decode($request->getContent(), true);
 

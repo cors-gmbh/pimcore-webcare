@@ -30,7 +30,7 @@ class UpdateController
         Request $request,
         FormFactoryInterface $formFactory,
         WebCareSiteRepository $repository,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ) {
         $body = json_decode($request->getContent(), true);
         /** @psalm-suppress InternalMethod **/

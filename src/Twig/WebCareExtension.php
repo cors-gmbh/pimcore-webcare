@@ -2,6 +2,19 @@
 
 declare(strict_types=1);
 
+/**
+ * CORS GmbH.
+ *
+ * This source file is available under two different licenses:
+ * - GNU General Public License version 3 (GPLv3)
+ * - Pimcore Commercial License (PCL)
+ * Full copyright and license information is available in
+ * LICENSE.md which is distributed with this source code.
+ *
+ * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
+ * @license    https://www.cors.gmbh/license     GPLv3 and PCL
+ */
+
 namespace CORS\Bundle\WebCareBundle\Twig;
 
 use CORS\Bundle\WebCareBundle\Entity\WebCareSite;
@@ -14,11 +27,12 @@ use Twig\TwigFunction;
 final class WebCareExtension extends AbstractExtension
 {
     protected $repository;
+
     protected $twig;
 
     public function __construct(
         WebCareSiteRepository $repository,
-        Environment $twig
+        Environment $twig,
     ) {
         $this->repository = $repository;
         $this->twig = $twig;
@@ -39,6 +53,8 @@ final class WebCareExtension extends AbstractExtension
             new TwigFunction('cors_webcare_imprint', [$this, 'renderImprint'], ['is_safe' => ['html']]),
             new TwigFunction('cors_webcare_imprint_v2_js', [$this, 'imprintJsV2']),
             new TwigFunction('cors_webcare_imprint_v2', [$this, 'renderImprintV2'], ['is_safe' => ['html']]),
+            new TwigFunction('cors_webcare_webdoc_v2_js', [$this, 'webDocJsV2'], ['is_safe' => ['html']]),
+            new TwigFunction('cors_webcare_webdoc_v2', [$this, 'renderWebDocV2'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -71,7 +87,7 @@ final class WebCareExtension extends AbstractExtension
                 $config->getOrganizationId(),
                 $config->getWebsiteId(),
                 $filename,
-                $extension
+                $extension,
             );
         }
 
@@ -80,7 +96,7 @@ final class WebCareExtension extends AbstractExtension
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
-            $extension
+            $extension,
         );
     }
 
@@ -91,7 +107,18 @@ final class WebCareExtension extends AbstractExtension
             $config->getClientId(),
             $config->getOrganizationId(),
             $filename,
-            $extension
+            $extension,
+        );
+    }
+
+    private function createWebDocUrl(string $clientId, string $organizationId, string $filename, string $extension)
+    {
+        return sprintf(
+            'https://webcache-eu.datareporter.eu/c/%s/%s/%s.%s',
+            $clientId,
+            $organizationId,
+            $filename,
+            $extension,
         );
     }
 
@@ -180,6 +207,23 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
+    public function renderWebDocV2(string $clientId, string $organizationId, bool $active = true)
+    {
+        $config = $this->findConfig($active);
+
+        if (!$config) {
+            return null;
+        }
+
+        $js = $this->createWebDocUrl($clientId, $organizationId, 'webdoc_v2', 'js');
+        $js_noscript = $this->createWebDocUrl($clientId, $organizationId, 'webdoc_noscript', 'js');
+
+        return $this->twig->render('@CORSWebCare/webdoc.html.twig', [
+            'js' => $js,
+            'js_noscript' => $js_noscript,
+        ]);
+    }
+
     public function cookieBannerCss(bool $active = true)
     {
         return $this->webCareIntegration('banner', 'css', $active);
@@ -208,5 +252,16 @@ final class WebCareExtension extends AbstractExtension
     public function imprintJsV2(bool $active = true)
     {
         return $this->webCareIntegration('imprint_v2', 'js', $active);
+    }
+
+    public function webDocJsV2(string $clientId, string $organizationId, bool $active = true)
+    {
+        $config = $this->findConfig($active);
+
+        if (!$config) {
+            return null;
+        }
+
+        return $this->createWebDocUrl($clientId, $organizationId, 'webdoc_v2', 'js');
     }
 }
