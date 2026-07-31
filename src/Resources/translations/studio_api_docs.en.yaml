@@ -1,0 +1,23 @@
+bundle_tag_web_care_description: 'CORS WebCare bundle endpoints'
+
+bundle_web_care_site_get_collection_summary: 'List WebCare site configurations'
+bundle_web_care_site_get_collection_description: |
+    Returns every Pimcore site (including the main site as site id 0) together with its
+    WebCare configuration. Sites without a configuration are returned with a null id.
+bundle_web_care_site_get_collection_success_response: 'List of WebCare site configurations'
+
+bundle_web_care_site_create_summary: 'Create a WebCare site configuration'
+bundle_web_care_site_create_description: |
+    Creates a WebCare configuration for a Pimcore site. Fails with a conflict when the
+    site already has a configuration.
+bundle_web_care_site_create_success_response: 'The created WebCare site configuration'
+
+bundle_web_care_site_update_by_id_summary: 'Update a WebCare site configuration'
+bundle_web_care_site_update_by_id_description: |
+    Updates the active flag and the WebCare credentials of an existing site configuration.
+bundle_web_care_site_update_by_id_success_response: 'The updated WebCare site configuration'
+
+bundle_web_care_site_delete_by_id_summary: 'Delete a WebCare site configuration'
+bundle_web_care_site_delete_by_id_description: |
+    Deletes the WebCare configuration of a site. The Pimcore site itself is not touched.
+bundle_web_care_site_delete_by_id_success_response: 'WebCare site configuration deleted'

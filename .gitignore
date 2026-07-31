@@ -45,3 +45,8 @@ var
 public/bundles
 config/local
 vendor/
+# Studio UI build
+node_modules/
+.rsbuild/
+dist/
+src/Resources/assets/pimcore-studio/@mf-types/

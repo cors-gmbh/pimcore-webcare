@@ -1,0 +1,32 @@
+{
+  "entrypoints": {
+    "main": {
+      "js": [
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/63.b1cb66d6.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/80.a2e8f8bb.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/524.be416de7.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/444.b6aa6d73.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/main.deb3e48e.js"
+      ],
+      "css": []
+    },
+    "corswebcare": {
+      "js": [
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/559.b04e108e.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/__federation_expose_default_export.64a363e2.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/63.b1cb66d6.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/80.a2e8f8bb.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/524.be416de7.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/async/444.b6aa6d73.js",
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/static/js/remoteEntry.js"
+      ],
+      "css": []
+    },
+    "exposeRemote": {
+      "js": [
+        "/bundles/corswebcare/studio/5349496d-6571-42ca-8f97-b8bc3845ed9d/exposeRemote.js"
+      ],
+      "css": []
+    }
+  }
+}

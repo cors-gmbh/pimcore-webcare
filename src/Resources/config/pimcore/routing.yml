@@ -1,3 +1,12 @@
+# Pimcore Studio API. The legacy /admin routes below stay in place as long as the
+# classic ExtJS UI is enabled.
+cors_web_care_studio:
+    resource: "@CORSWebCareBundle/Controller/Studio"
+    type: attribute
+    prefix: '%pimcore_studio_backend.url_prefix%/bundle/web-care'
+    options:
+        expose: true
+
 cors_webcaresite_create:
     path: /admin/cors/webcaresite/create
     defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\CreateController }

@@ -1,0 +1,25 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # Studio API controllers are imported separately so they are public and can
+    # type-hint services in their actions.
+    CORS\Bundle\WebCareBundle\Controller\Studio\:
+        resource: '../../../Controller/Studio'
+        public: true
+        tags: [ 'controller.service_arguments' ]
+
+    CORS\Bundle\WebCareBundle\Service\Studio\WebCareSiteServiceInterface:
+        class: CORS\Bundle\WebCareBundle\Service\Studio\WebCareSiteService
+
+    CORS\Bundle\WebCareBundle\Service\Studio\SiteListingProviderInterface:
+        class: CORS\Bundle\WebCareBundle\Service\Studio\SiteListingProvider
+
+    CORS\Bundle\WebCareBundle\Hydrator\WebCareSiteHydratorInterface:
+        class: CORS\Bundle\WebCareBundle\Hydrator\WebCareSiteHydrator
+
+    CORS\Bundle\WebCareBundle\Studio\WebpackEntryPointProvider:
+        tags:
+            - { name: pimcore_studio_ui.webpack_entry_point_provider }
