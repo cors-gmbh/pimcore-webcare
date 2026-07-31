@@ -4,9 +4,3 @@ doctrine:
         entity_managers:
             default:
                 auto_mapping: true
-
-# The Studio API controllers and schemas of this bundle have to be scanned separately,
-# the StudioBackendBundle only scans its own src directory by default.
-pimcore_studio_backend:
-    open_api_scan_paths:
-        - "%kernel.project_dir%/vendor/cors/web-care/src"

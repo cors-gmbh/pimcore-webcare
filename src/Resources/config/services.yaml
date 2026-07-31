@@ -28,6 +28,14 @@ services:
         arguments:
             - '@doctrine.dbal.default_connection'
 
+    # Always registered, but returns an empty route collection when the Studio backend is missing
+    # (the extension then sets the prefix parameter to null).
+    CORS\Bundle\WebCareBundle\Routing\StudioRouteLoader:
+        arguments:
+            $routePrefix: '%cors_web_care.studio.route_prefix%'
+        tags:
+            - { name: routing.loader }
+
     CORS\Bundle\WebCareBundle\Twig\WebCareExtension:
         arguments:
             - '@CORS\Bundle\WebCareBundle\Repository\WebCareSiteRepository'
