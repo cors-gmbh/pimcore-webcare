@@ -1,24 +1,4 @@
 services:
-    CORS\Bundle\WebCareBundle\Controller\CreateController:
-        tags:
-            - { name: controller.service_arguments }
-
-    CORS\Bundle\WebCareBundle\Controller\ListController:
-        tags:
-            - { name: controller.service_arguments }
-
-    CORS\Bundle\WebCareBundle\Controller\UpdateController:
-        tags:
-            - { name: controller.service_arguments }
-
-    CORS\Bundle\WebCareBundle\Controller\DeleteController:
-        tags:
-            - { name: controller.service_arguments }
-
-    CORS\Bundle\WebCareBundle\EventListener\AdminJavascriptListener:
-        tags:
-            - { name: kernel.event_subscriber }
-
     CORS\Bundle\WebCareBundle\Repository\WebCareSiteRepository:
         arguments:
             - '@Doctrine\Persistence\ManagerRegistry'
@@ -27,14 +7,6 @@ services:
         public: true
         arguments:
             - '@doctrine.dbal.default_connection'
-
-    # Always registered, but returns an empty route collection when the Studio backend is missing
-    # (the extension then sets the prefix parameter to null).
-    CORS\Bundle\WebCareBundle\Routing\StudioRouteLoader:
-        arguments:
-            $routePrefix: '%cors_web_care.studio.route_prefix%'
-        tags:
-            - { name: routing.loader }
 
     CORS\Bundle\WebCareBundle\Twig\WebCareExtension:
         arguments:

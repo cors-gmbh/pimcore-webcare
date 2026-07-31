@@ -1,38 +1,7 @@
-# Pimcore Studio API. Imported through a dedicated loader, because the routes must only be
-# registered when the StudioBackendBundle is installed - see StudioRouteLoader.
-# The legacy /admin routes below stay in place as long as the classic ExtJS UI is enabled.
+# Pimcore Studio API. Studio is a hard requirement of this bundle since 2026.
 cors_web_care_studio:
-    resource: .
-    type: cors_web_care_studio
-
-cors_webcaresite_create:
-    path: /admin/cors/webcaresite/create
-    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\CreateController }
-    methods:
-        - 'POST'
-    options:
-        expose: true
-
-cors_webcaresite_list:
-    path: /admin/cors/webcaresite/list
-    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\ListController }
-    methods:
-        - 'GET'
-    options:
-        expose: true
-
-cors_webcaresite_delete:
-    path: /admin/cors/webcaresite/delete
-    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\DeleteController }
-    methods:
-        - 'POST'
-    options:
-        expose: true
-
-cors_webcaresite_update:
-    path: /admin/cors/webcaresite/update
-    defaults: { _controller: CORS\Bundle\WebCareBundle\Controller\UpdateController }
-    methods:
-        - 'POST'
+    resource: "@CORSWebCareBundle/Controller/Studio"
+    type: attribute
+    prefix: '%pimcore_studio_backend.url_prefix%/bundle/web-care'
     options:
         expose: true

@@ -19,3 +19,7 @@ services:
 
     CORS\Bundle\WebCareBundle\Hydrator\WebCareSiteHydratorInterface:
         class: CORS\Bundle\WebCareBundle\Hydrator\WebCareSiteHydrator
+
+    CORS\Bundle\WebCareBundle\Studio\WebpackEntryPointProvider:
+        tags:
+            - { name: pimcore_studio_ui.webpack_entry_point_provider }

@@ -45,6 +45,8 @@ var
 public/bundles
 config/local
 vendor/
+# dev environment only, the bundle itself must not pin dependencies
+composer.lock
 # Studio UI build
 node_modules/
 .rsbuild/

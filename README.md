@@ -12,15 +12,18 @@ bin/console pimcore:bundle:enable CORSWebCareBundle
 bin/console pimcore:bundle:install CORSWebCareBundle
 ```
 
+Pimcore Studio (`pimcore/studio-backend-bundle` and `pimcore/studio-ui-bundle`) is a hard
+requirement: the classic ExtJS admin UI no longer exists in Pimcore 2026, so this bundle ships a
+Studio UI only.
+
 # Configuration
 
- - Open Pimcore
- - Open Tools -> Webcare Settings 
-
- ![Tools](docs/tools.png)
+ - Open Pimcore Studio
+ - Open System -> Webcare Settings
  - Configure Client ID, Configuration ID and Website ID per Site or for your "Home" Site.
 
- ![Settings](docs/settings.png)
+The menu entry is gated on the `web_care_settings` user permission, which the bundle installer
+creates. Users without that permission neither see the entry nor may call the API.
 
 # Usage in Twig
 

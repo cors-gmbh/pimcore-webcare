@@ -39,16 +39,11 @@
                 <referencedClass name="Symfony\Bundle\WebServerBundle\WebServerBundle"/>
                 <referencedClass name="Pimcore\Event\BundleManagerEvents"/>
                 <referencedClass name="Pimcore\Event\Model\DataObjectDeleteInfoEvent"/>
-                <referencedClass name="Pimcore\Event\AdminEvents"/>
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Security\User\TokenStorageUserResolver"/>
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Controller\AdminController"/>
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Security\User\User"/>
             </errorLevel>
         </DeprecatedClass>
         <DeprecatedInterface>
             <errorLevel type="info">
                 <referencedClass name="Symfony\Component\Security\Core\User\AdvancedUserInterface"/>
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Controller\AdminControllerInterface"/>
             </errorLevel>
         </DeprecatedInterface>
         <DeprecatedMethod>
@@ -61,8 +56,6 @@
                 <referencedMethod name="Symfony\Component\Intl\Intl::getRegionBundle"/>
                 <referencedMethod name="Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent::getException"/>
                 <referencedMethod name="Symfony\Bundle\FrameworkBundle\Controller\AbstractController::get"/>
-                <referencedMethod name="Pimcore\Bundle\AdminBundle\Controller\AdminController::decodeJson"/>
-                <referencedMethod name="Pimcore\Bundle\AdminBundle\Controller\AdminController::getAdminUser"/>
             </errorLevel>
         </DeprecatedMethod>
 
