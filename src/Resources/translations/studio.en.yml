@@ -1,0 +1,27 @@
+# Studio UI labels. The classic ExtJS UI resolves its keys against admin.*.yml,
+# Pimcore Studio against the `studio` domain — hence this separate catalogue.
+web_care.menu.settings: 'Webcare Settings'
+web_care.title: 'Webcare Settings'
+
+web_care.column.site: 'Site'
+web_care.column.active: 'Active'
+web_care.column.client_id: 'Client ID'
+web_care.column.organization_id: 'Organization ID'
+web_care.column.website_id: 'Website ID'
+web_care.column.actions: 'Actions'
+
+web_care.action.edit: 'Edit'
+web_care.action.delete: 'Delete'
+web_care.action.save: 'Save'
+web_care.action.cancel: 'Cancel'
+web_care.action.reload: 'Reload'
+
+web_care.edit.title: 'Edit Webcare configuration'
+web_care.delete.confirm.title: 'Delete Webcare configuration'
+web_care.delete.confirm.text: 'Do you really want to delete the Webcare configuration for this site?'
+
+web_care.notification.saved: 'Webcare configuration saved'
+web_care.notification.deleted: 'Webcare configuration deleted'
+
+web_care.empty: 'No sites available'
+web_care.not_configured: 'Not configured'

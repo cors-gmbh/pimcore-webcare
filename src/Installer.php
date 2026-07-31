@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace CORS\Bundle\WebCareBundle;
 
+use CORS\Bundle\WebCareBundle\Util\Constant\PermissionConstants;
 use Doctrine\DBAL\Connection;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -35,6 +36,8 @@ class Installer implements InstallerInterface
     public function install(): void
     {
         $this->connection->executeQuery('CREATE TABLE cors_webcare_site (id INT AUTO_INCREMENT NOT NULL, siteId INT DEFAULT NULL, active TINYINT(1) NOT NULL, clientId VARCHAR(255) DEFAULT NULL, organizationId VARCHAR(255) DEFAULT NULL, websiteId VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8MB4 COLLATE `utf8mb4_general_ci` ENGINE = InnoDB');
+
+        $this->installPermission();
     }
 
     public function uninstall(): void
@@ -44,6 +47,24 @@ class Installer implements InstallerInterface
         if ($schemaManager->tablesExist(['cors_webcare_site'])) {
             $schemaManager->dropTable('cors_webcare_site');
         }
+
+        $this->connection->executeStatement(
+            'DELETE FROM users_permission_definitions WHERE `key` = ?',
+            [PermissionConstants::WEB_CARE_SETTINGS],
+        );
+    }
+
+    /**
+     * Studio's UserPermissionVoter only grants attributes that exist in
+     * `users_permission_definitions`. Without this row every Studio request for this
+     * bundle is denied, no matter what the user is allowed to do.
+     */
+    public function installPermission(): void
+    {
+        $this->connection->executeStatement(
+            'INSERT IGNORE INTO users_permission_definitions (`key`, `category`) VALUES (?, ?)',
+            [PermissionConstants::WEB_CARE_SETTINGS, 'WebCare'],
+        );
     }
 
     public function isInstalled(): bool
