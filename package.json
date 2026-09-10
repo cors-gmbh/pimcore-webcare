@@ -7,7 +7,7 @@
     ".": "./src/Resources/assets/pimcore-studio/src/index.ts"
   },
   "scripts": {
-    "build": "rsbuild build",
+    "build": "rsbuild build && studio-package-build --build-dir src/Resources/public/studio --out-dir src/Resources/build-dist",
     "dev": "rsbuild dev",
     "check-types": "tsc --noEmit",
     "check-types-watch": "tsc --noEmit --watch",
@@ -22,11 +22,10 @@
     "@rsbuild/plugin-svgr": "^1.2.2",
     "@types/node": "^22.14.0",
     "@types/react-dom": "18.3.x",
-    "typescript": "^5.3.3",
-    "uuid": "^9.0.0"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@pimcore/studio-ui-bundle": "2025.4.3",
+    "@pimcore/studio-ui-bundle": "2026.2.5",
     "@reduxjs/toolkit": "^2.0.1",
     "@tanstack/react-table": "^8.20.5",
     "antd": "^5.12.0",
