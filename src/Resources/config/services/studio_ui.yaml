@@ -2,5 +2,9 @@
 # implements an interface of that bundle.
 services:
     CORS\Bundle\WebCareBundle\Studio\WebpackEntryPointProvider:
+        # the archive extractor is injected through the trait's #[Required] setter; the service is
+        # not autowired, so the call is explicit
+        calls:
+            - [setBuildArchiveExtractor, ['@Pimcore\Bundle\StudioUiBundle\Build\BuildArchiveExtractor']]
         tags:
             - { name: pimcore_studio_ui.webpack_entry_point_provider }

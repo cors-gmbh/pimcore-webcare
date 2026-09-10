@@ -56,6 +56,9 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "conflict": {
+        "pimcore/studio-ui-bundle": "<2025.4.12"
+    },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,

@@ -50,3 +50,10 @@ node_modules/
 .rsbuild/
 dist/
 src/Resources/assets/pimcore-studio/@mf-types/
+
+# Expanded Studio frontend build. Not committed: the build ships as an archive in
+# src/Resources/build-dist/build-<id>.zip, which Pimcore's BuildArchiveExtractor unpacks into
+# src/Resources/public/studio at cache warmup. The extractor's marker, lock and temporary directories
+# live next to the build.
+src/Resources/public/studio/*
+src/Resources/public/.studio*
