@@ -6,7 +6,7 @@
  * configuration yet and are created on first save.
  *
  * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
- * @license    GPLv3 and PCL
+ * @license    https://opensource.org/license/mit MIT
  */
 
 import React, { useEffect, useState } from 'react'

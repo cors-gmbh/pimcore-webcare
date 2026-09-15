@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 
-/**
- * CORS GmbH.
+/*
+ * CORS GmbH
  *
- * This source file is available under two different licenses:
- * - GNU General Public License version 3 (GPLv3)
- * - Pimcore Commercial License (PCL)
+ * This source file is available under the MIT license
+ *
  * Full copyright and license information is available in
  * LICENSE.md which is distributed with this source code.
  *
- *  @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
- *  @license    https://www.cors.gmbh/license     GPLv3 and PCL
+ * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
+ * @license    https://opensource.org/license/mit MIT
  */
 
 use PhpCsFixer\Fixer\Comment\HeaderCommentFixer;
@@ -26,16 +25,15 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->paths(['src']);
 
     $header = <<<EOT
-CORS GmbH.
+CORS GmbH
 
-This source file is available under two different licenses:
-- GNU General Public License version 3 (GPLv3)
-- Pimcore Commercial License (PCL)
+This source file is available under the MIT license
+
 Full copyright and license information is available in
 LICENSE.md which is distributed with this source code.
 
 @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
-@license    https://www.cors.gmbh/license     GPLv3 and PCL
+@license    https://opensource.org/license/mit MIT
 EOT;
 
     $ecsConfig->ruleWithConfiguration(HeaderCommentFixer::class, ['header' => $header]);
