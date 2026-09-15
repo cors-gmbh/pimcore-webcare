@@ -90,3 +90,7 @@ vendor/bin/psalm src
 
 The Studio plugin is built with `npm run build` (see `package.json`); the build lands as an
 archive in `src/Resources/build-dist/` and is committed by the `Studio Frontend Build` workflow.
+
+## License
+
+MIT, see [LICENSE.md](LICENSE.md).

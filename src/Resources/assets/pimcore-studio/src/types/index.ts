@@ -2,7 +2,7 @@
  * CORS WebCare - Pimcore Studio Plugin
  *
  * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
- * @license    GPLv3 and PCL
+ * @license    MIT
  */
 
 /**

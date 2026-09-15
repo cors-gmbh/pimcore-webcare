@@ -7,7 +7,7 @@
  * its generated slices.
  *
  * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
- * @license    GPLv3 and PCL
+ * @license    MIT
  */
 
 import { api } from '@pimcore/studio-ui-bundle/api'
