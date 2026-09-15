@@ -1,0 +1,31 @@
+name: Static Tests
+
+on:
+  push:
+    branches: [ '*.x' ]
+  pull_request:
+    branches: [ '*.x' ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    uses: cors-gmbh/shared-workflows/.github/workflows/php-test.yaml@main
+    with:
+      # single source of truth for the PHP version: DOCKER_PHP_VERSION in .env
+      versions-from-env: true
+      # pimcore stays on: Psalm and the lints boot the Pimcore kernel, and php-test only writes the
+      # registration from env_local to .env.local when the Pimcore steps are enabled.
+      # no phpstan.neon in this repository
+      phpstan: false
+      psalm: true
+      lint-yaml-paths: 'config src/Resources/config'
+    secrets:
+      composer_auth: ${{ secrets.COMPOSER_AUTH }}
+      # Pimcore refuses to boot without a registered instance; php-test writes this to .env.local.
+      env_local: |
+        PIMCORE_ENCRYPTION_SECRET=${{ secrets.PIMCORE_ENCRYPTION_SECRET }}
+        PIMCORE_INSTANCE_IDENTIFIER=${{ secrets.PIMCORE_INSTANCE_IDENTIFIER }}
+        PIMCORE_PRODUCT_KEY=${{ secrets.PIMCORE_PRODUCT_KEY }}
