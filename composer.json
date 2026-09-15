@@ -56,6 +56,13 @@
             ]
         }
     },
+    "repositories": {
+        "packagist.org": false,
+        "private-packagist": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/cors/"
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
