@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -28,8 +28,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Pimcore\Bundle\StaticResolverBundle\Models\Site\SiteResolverInterface;
 use Pimcore\Bundle\StudioBackendBundle\Exception\Api\ConflictException;
 use Pimcore\Bundle\StudioBackendBundle\Exception\Api\NotFoundException;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use function sprintf;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @internal
@@ -77,11 +77,13 @@ final readonly class WebCareSiteService implements WebCareSiteServiceInterface
         }
 
         foreach ($this->siteListingProvider->getSites() as $site) {
-            if (in_array($site->getId(), $processedSiteIds, true)) {
+            $siteId = $site->getId();
+
+            if ($siteId === null || in_array($siteId, $processedSiteIds, true)) {
                 continue;
             }
 
-            $result[] = $this->webCareSiteHydrator->hydrateUnconfiguredSite($site->getId(), $site->getMainDomain());
+            $result[] = $this->webCareSiteHydrator->hydrateUnconfiguredSite($siteId, $site->getMainDomain());
         }
 
         if (!in_array(0, $processedSiteIds, true)) {
@@ -95,13 +97,18 @@ final readonly class WebCareSiteService implements WebCareSiteServiceInterface
         return $result;
     }
 
+    /**
+     * ConflictException is marked internal, but Studio has no public exception for HTTP 409.
+     *
+     * @psalm-suppress InternalClass, InternalMethod
+     */
     public function createWebCareSite(CreateWebCareSiteParameters $parameters): WebCareSite
     {
         $existing = $this->webCareSiteRepository->findOneBy(['siteId' => $parameters->getSiteId()]);
 
         if ($existing !== null) {
             throw new ConflictException(
-                sprintf('A WebCare configuration for site %d already exists', $parameters->getSiteId())
+                sprintf('A WebCare configuration for site %d already exists', $parameters->getSiteId()),
             );
         }
 
@@ -162,7 +169,7 @@ final readonly class WebCareSiteService implements WebCareSiteServiceInterface
 
         $response = $this->webCareSiteHydrator->hydrateWebCareSite(
             $entity,
-            $site?->getMainDomain() ?? self::MAIN_SITE_DOMAIN
+            $site?->getMainDomain() ?? self::MAIN_SITE_DOMAIN,
         );
 
         $this->eventDispatcher->dispatch(new WebCareSiteEvent($response), WebCareSiteEvent::EVENT_NAME);

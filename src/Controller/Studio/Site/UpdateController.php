@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -55,6 +55,10 @@ final class UpdateController extends AbstractApiController
     }
 
     /**
+     * The Studio OpenAPI attributes are marked internal, but every Studio bundle controller needs them.
+     *
+     * @psalm-suppress InternalClass, InternalMethod
+     *
      * @throws NotFoundException
      * @throws Exception
      */
@@ -64,14 +68,14 @@ final class UpdateController extends AbstractApiController
         operationId: 'bundle_web_care_site_update_by_id',
         description: 'bundle_web_care_site_update_by_id_description',
         summary: 'bundle_web_care_site_update_by_id_summary',
-        tags: [Tags::WebCare->value]
+        tags: [Tags::WebCare->value],
     )]
     #[IsGranted(PermissionConstants::WEB_CARE_SETTINGS)]
     #[IdParameter(type: 'web care site', schema: new Schema(type: 'integer', example: 1))]
     #[UpdateWebCareSiteRequestBody]
     #[SuccessResponse(
         description: 'bundle_web_care_site_update_by_id_success_response',
-        content: new JsonContent(ref: WebCareSite::class, type: 'object')
+        content: new JsonContent(ref: WebCareSite::class, type: 'object'),
     )]
     #[DefaultResponses([
         HttpResponseCodes::UNAUTHORIZED,

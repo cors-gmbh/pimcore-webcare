@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -30,6 +30,10 @@ final class WebpackEntryPointProvider implements BuildArchiveProviderInterface
      * Resources/public/studio by Pimcore's BuildArchiveExtractor at cache warmup
      * (pimcore/studio-ui-bundle#3779). The extractor is injected through the trait's
      * #[Required] setter, which the autowired service definition satisfies.
+     *
+     * BuildArchive is marked internal, but it is the only way to hook into Pimcore's build extraction.
+     *
+     * @psalm-suppress InternalClass, InternalMethod
      */
     protected function buildArchive(): BuildArchive
     {

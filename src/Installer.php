@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -25,7 +25,7 @@ use Symfony\Component\Console\Output\NullOutput;
 
 class Installer implements InstallerInterface
 {
-    protected $connection;
+    protected Connection $connection;
 
     public function __construct(
         Connection $connection,
@@ -84,12 +84,12 @@ class Installer implements InstallerInterface
         return $this->isInstalled();
     }
 
-    public function canBeUpdated()
+    public function canBeUpdated(): bool
     {
         return false;
     }
 
-    public function update()
+    public function update(): void
     {
     }
 

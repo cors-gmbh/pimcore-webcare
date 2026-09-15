@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -22,6 +22,9 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Pimcore\Model\Site;
 
+/**
+ * @extends ServiceEntityRepository<WebCareSite>
+ */
 class WebCareSiteRepository extends ServiceEntityRepository
 {
     public function __construct(
