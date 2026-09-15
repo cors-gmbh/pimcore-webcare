@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -51,6 +51,10 @@ class WebCareSite
 
     public function getId(): int
     {
+        if ($this->id === null) {
+            throw new \LogicException('WebCareSite has no id before it is persisted');
+        }
+
         return $this->id;
     }
 

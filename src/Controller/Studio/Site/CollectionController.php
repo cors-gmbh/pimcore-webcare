@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -49,6 +49,10 @@ final class CollectionController extends AbstractApiController
     }
 
     /**
+     * The Studio OpenAPI attributes are marked internal, but every Studio bundle controller needs them.
+     *
+     * @psalm-suppress InternalClass, InternalMethod
+     *
      * @throws Exception
      */
     #[Route(path: self::ROUTE, name: 'pimcore_studio_api_bundle_web_care_sites', methods: ['GET'])]
@@ -57,12 +61,12 @@ final class CollectionController extends AbstractApiController
         operationId: 'bundle_web_care_site_get_collection',
         description: 'bundle_web_care_site_get_collection_description',
         summary: 'bundle_web_care_site_get_collection_summary',
-        tags: [Tags::WebCare->value]
+        tags: [Tags::WebCare->value],
     )]
     #[IsGranted(PermissionConstants::WEB_CARE_SETTINGS)]
     #[SuccessResponse(
         description: 'bundle_web_care_site_get_collection_success_response',
-        content: new ItemsJson(WebCareSite::class)
+        content: new ItemsJson(WebCareSite::class),
     )]
     #[DefaultResponses([
         HttpResponseCodes::UNAUTHORIZED,

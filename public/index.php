@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Pimcore
  *
@@ -21,7 +22,6 @@ require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 Bootstrap::setProjectRoot();
 
 return function (Request $request, array $context) {
-
     // set current request as property on tool as there's no
     // request stack available yet
     Tool::setCurrentRequest($request);

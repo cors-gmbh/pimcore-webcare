@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -53,6 +53,10 @@ final class CreateController extends AbstractApiController
     }
 
     /**
+     * The Studio OpenAPI attributes are marked internal, but every Studio bundle controller needs them.
+     *
+     * @psalm-suppress InternalClass, InternalMethod
+     *
      * @throws ConflictException
      * @throws Exception
      */
@@ -62,13 +66,13 @@ final class CreateController extends AbstractApiController
         operationId: 'bundle_web_care_site_create',
         description: 'bundle_web_care_site_create_description',
         summary: 'bundle_web_care_site_create_summary',
-        tags: [Tags::WebCare->value]
+        tags: [Tags::WebCare->value],
     )]
     #[IsGranted(PermissionConstants::WEB_CARE_SETTINGS)]
     #[CreateWebCareSiteRequestBody]
     #[SuccessResponse(
         description: 'bundle_web_care_site_create_success_response',
-        content: new JsonContent(ref: WebCareSite::class, type: 'object')
+        content: new JsonContent(ref: WebCareSite::class, type: 'object'),
     )]
     #[DefaultResponses([
         HttpResponseCodes::UNAUTHORIZED,

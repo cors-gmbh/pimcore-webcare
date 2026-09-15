@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -26,9 +26,9 @@ use Twig\TwigFunction;
 
 final class WebCareExtension extends AbstractExtension
 {
-    protected $repository;
+    protected WebCareSiteRepository $repository;
 
-    protected $twig;
+    protected Environment $twig;
 
     public function __construct(
         WebCareSiteRepository $repository,
@@ -38,7 +38,7 @@ final class WebCareExtension extends AbstractExtension
         $this->twig = $twig;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('cors_webcare_config', [$this, 'findConfig']),
@@ -67,7 +67,7 @@ final class WebCareExtension extends AbstractExtension
         return $this->repository->findDefault($active);
     }
 
-    public function webCareIntegration(string $filename, string $extension, bool $active = true)
+    public function webCareIntegration(string $filename, string $extension, bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -78,7 +78,7 @@ final class WebCareExtension extends AbstractExtension
         return $this->createUrl($config, $filename, $extension);
     }
 
-    private function createUrl(WebCareSite $config, string $filename, string $extension)
+    private function createUrl(WebCareSite $config, string $filename, string $extension): string
     {
         if ($config->getWebsiteId()) {
             return sprintf(
@@ -100,7 +100,7 @@ final class WebCareExtension extends AbstractExtension
         );
     }
 
-    private function createImprintUrl(WebCareSite $config, string $filename, string $extension)
+    private function createImprintUrl(WebCareSite $config, string $filename, string $extension): string
     {
         return sprintf(
             'https://webcache-eu.datareporter.eu/c/%s/%s/%s.%s',
@@ -111,7 +111,7 @@ final class WebCareExtension extends AbstractExtension
         );
     }
 
-    private function createWebDocUrl(string $clientId, string $organizationId, string $filename, string $extension)
+    private function createWebDocUrl(string $clientId, string $organizationId, string $filename, string $extension): string
     {
         return sprintf(
             'https://webcache-eu.datareporter.eu/c/%s/%s/%s.%s',
@@ -122,7 +122,7 @@ final class WebCareExtension extends AbstractExtension
         );
     }
 
-    public function renderCookieBanner(bool $active = true)
+    public function renderCookieBanner(bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -139,7 +139,7 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderPrivacyStatement(bool $active = true)
+    public function renderPrivacyStatement(bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -156,7 +156,7 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderPrivacyStatementV2(bool $active = true)
+    public function renderPrivacyStatementV2(bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -173,7 +173,7 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderImprint(bool $active = true)
+    public function renderImprint(bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -190,7 +190,7 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderImprintV2(bool $active = true)
+    public function renderImprintV2(bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -207,7 +207,7 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function renderWebDocV2(string $clientId, string $organizationId, bool $active = true)
+    public function renderWebDocV2(string $clientId, string $organizationId, bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 
@@ -224,37 +224,37 @@ final class WebCareExtension extends AbstractExtension
         ]);
     }
 
-    public function cookieBannerCss(bool $active = true)
+    public function cookieBannerCss(bool $active = true): ?string
     {
         return $this->webCareIntegration('banner', 'css', $active);
     }
 
-    public function cookieBannerJs(bool $active = true)
+    public function cookieBannerJs(bool $active = true): ?string
     {
         return $this->webCareIntegration('banner', 'js', $active);
     }
 
-    public function privacyStatementJs(bool $active = true)
+    public function privacyStatementJs(bool $active = true): ?string
     {
         return $this->webCareIntegration('privacynotice', 'js', $active);
     }
 
-    public function imprintJs(bool $active = true)
+    public function imprintJs(bool $active = true): ?string
     {
         return $this->webCareIntegration('imprint', 'js', $active);
     }
 
-    public function privacyStatementJsV2(bool $active = true)
+    public function privacyStatementJsV2(bool $active = true): ?string
     {
         return $this->webCareIntegration('privacynotice_v2', 'js', $active);
     }
 
-    public function imprintJsV2(bool $active = true)
+    public function imprintJsV2(bool $active = true): ?string
     {
         return $this->webCareIntegration('imprint_v2', 'js', $active);
     }
 
-    public function webDocJsV2(string $clientId, string $organizationId, bool $active = true)
+    public function webDocJsV2(string $clientId, string $organizationId, bool $active = true): ?string
     {
         $config = $this->findConfig($active);
 

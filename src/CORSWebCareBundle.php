@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -31,8 +31,10 @@ class CORSWebCareBundle extends AbstractPimcoreBundle
         return 'CORS WebCare Bundle';
     }
 
-    public function getInstaller(): Installer
+    public function getInstaller(): ?Installer
     {
-        return $this->container->get(Installer::class);
+        $installer = $this->container?->get(Installer::class);
+
+        return $installer instanceof Installer ? $installer : null;
     }
 }

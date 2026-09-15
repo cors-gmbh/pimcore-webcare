@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -49,6 +49,10 @@ final class DeleteController extends AbstractApiController
     }
 
     /**
+     * The Studio OpenAPI attributes are marked internal, but every Studio bundle controller needs them.
+     *
+     * @psalm-suppress InternalClass, InternalMethod
+     *
      * @throws NotFoundException
      */
     #[Route(path: self::ROUTE, name: 'pimcore_studio_api_bundle_web_care_delete_site', methods: ['DELETE'])]
@@ -57,7 +61,7 @@ final class DeleteController extends AbstractApiController
         operationId: 'bundle_web_care_site_delete_by_id',
         description: 'bundle_web_care_site_delete_by_id_description',
         summary: 'bundle_web_care_site_delete_by_id_summary',
-        tags: [Tags::WebCare->value]
+        tags: [Tags::WebCare->value],
     )]
     #[IsGranted(PermissionConstants::WEB_CARE_SETTINGS)]
     #[IdParameter(type: 'web care site', schema: new Schema(type: 'integer', example: 1))]

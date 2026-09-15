@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * CORS GmbH.
  *
  * This source file is available under two different licenses:
@@ -25,11 +25,11 @@ use OpenApi\Attributes\RequestBody;
 #[Attribute(Attribute::TARGET_METHOD)]
 final class CreateWebCareSiteRequestBody extends RequestBody
 {
-    public function __construct()
-    {
+    public function __construct(
+        ) {
         parent::__construct(
             required: true,
-            content: new JsonContent(ref: CreateWebCareSiteParameters::class)
+            content: new JsonContent(ref: CreateWebCareSiteParameters::class),
         );
     }
 }
