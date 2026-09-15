@@ -15,13 +15,20 @@ declare(strict_types=1);
  *  @license    https://www.cors.gmbh/license     GPLv3 and PCL
  */
 
+use CORS\Bundle\WebCareBundle\CORSWebCareBundle;
 use Pimcore\HttpKernel\BundleCollection\BundleCollection;
 use Pimcore\Kernel as PimcoreKernel;
 
+/**
+ * Dev-harness kernel. Not part of the distributed composer package (see .gitattributes);
+ * only autoloaded through autoload-dev.
+ */
 class Kernel extends PimcoreKernel
 {
     public function registerBundlesToCollection(BundleCollection $collection): void
     {
-        $collection->addBundle(new \CORS\Bundle\WebCareBundle\CORSWebCareBundle());
+        // The bundle under development is always on; everything else (Studio,
+        // generic data index, …) is registered through config/bundles.php.
+        $collection->addBundle(new CORSWebCareBundle());
     }
 }

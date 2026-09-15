@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 /**
  * Pimcore
  *
@@ -34,5 +35,6 @@ define('PIMCORE_CONSOLE', true);
 
 return function (array $context) {
     $kernel = \Pimcore\Bootstrap::startupCli();
+
     return new Application($kernel);
 };

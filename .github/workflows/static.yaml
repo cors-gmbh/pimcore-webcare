@@ -2,7 +2,7 @@ name: Static Tests
 
 on:
   push:
-    branches: [ '*.x' ]
+    branches: [ '*.x' ]      # default branch is a version branch
   pull_request:
     branches: [ '*.x' ]
   workflow_dispatch:
@@ -16,11 +16,13 @@ jobs:
     with:
       # single source of truth for the PHP version: DOCKER_PHP_VERSION in .env
       versions-from-env: true
-      # pimcore stays on: Psalm and the lints boot the Pimcore kernel, and php-test only writes the
-      # registration from env_local to .env.local when the Pimcore steps are enabled.
-      # no phpstan.neon in this repository
-      phpstan: false
+      # pimcore stays on: PHPStan and the lints boot the Pimcore kernel of the dev harness
+      # (Kernel.php, bin/console), and php-test only writes the registration from env_local to
+      # .env.local when the Pimcore steps are enabled.
+      phpstan: true
       psalm: true
+      # config/ is the harness plus the bundle's config/pimcore, src/Resources/config the bundle's
+      # service definitions.
       lint-yaml-paths: 'config src/Resources/config'
     secrets:
       composer_auth: ${{ secrets.COMPOSER_AUTH }}
