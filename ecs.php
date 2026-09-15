@@ -11,7 +11,7 @@ declare(strict_types=1);
  * LICENSE.md which is distributed with this source code.
  *
  * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
- * @license    https://www.cors.gmbh/license MIT
+ * @license    https://opensource.org/license/mit MIT
  */
 
 use PhpCsFixer\Fixer\Comment\HeaderCommentFixer;
@@ -33,7 +33,7 @@ Full copyright and license information is available in
 LICENSE.md which is distributed with this source code.
 
 @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
-@license    https://www.cors.gmbh/license MIT
+@license    https://opensource.org/license/mit MIT
 EOT;
 
     $ecsConfig->ruleWithConfiguration(HeaderCommentFixer::class, ['header' => $header]);

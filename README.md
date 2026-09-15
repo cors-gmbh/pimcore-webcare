@@ -93,4 +93,4 @@ archive in `src/Resources/build-dist/` and is committed by the `Studio Frontend 
 
 ## License
 
-MIT, see [LICENSE.md](LICENSE.md).
+[MIT](https://opensource.org/license/mit), see [LICENSE.md](LICENSE.md).

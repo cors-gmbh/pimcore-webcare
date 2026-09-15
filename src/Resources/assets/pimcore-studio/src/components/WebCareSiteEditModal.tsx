@@ -2,7 +2,7 @@
  * CORS WebCare - Edit modal for a single site configuration
  *
  * @copyright  Copyright (c) CORS GmbH (https://www.cors.gmbh)
- * @license    MIT
+ * @license    https://opensource.org/license/mit MIT
  */
 
 import React, { useEffect } from 'react'
