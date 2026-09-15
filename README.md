@@ -79,7 +79,8 @@ values from the repository secrets `PIMCORE_ENCRYPTION_SECRET`, `PIMCORE_INSTANC
 and `PIMCORE_PRODUCT_KEY` (`.github/workflows/static.yaml`, written to `.env.local` by the
 shared `php-test` workflow before the kernel boots).
 
-Static checks run the same way as in CI, with the shared configuration from `cors/dev`:
+Static checks run the same way as in CI. This repository is public, so the shared rule set comes
+from the public `coreshop/test-setup` package instead of the private `cors/dev`:
 
 ```bash
 vendor/bin/ecs check src
